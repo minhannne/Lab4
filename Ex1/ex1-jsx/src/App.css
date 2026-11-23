@@ -9,7 +9,6 @@ nav a.active {
   font-weight: 700;
   text-decoration: underline;
 }
-
 .people-grid {
   display: grid;
   grid-template-columns: minmax(280px, 1fr) 2fr;
@@ -29,4 +28,32 @@ nav a.active {
   .people-grid {
     grid-template-columns: 1fr;
   }
+}
+.people-detail {
+  box-sizing: border-box;
+  min-block-size: 15rem;
+}
+
+.people-detail h2 {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  margin: 0 0 1rem;
+}
+
+.people-detail dl {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.people-detail dd {
+  margin: 0 0 0.5rem;
+}
+
+.skeleton-bar {
+  display: inline-block;
+  width: min(8rem, 100%);
+  height: 0.75em;
+  vertical-align: middle;
+  border-radius: 4px;
+  background: #d0d5dd;
 }

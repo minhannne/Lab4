@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { FormContext } from './FormContext.js'
 import InputField from './InputField.jsx'
+import ShowData from './ShowData.jsx'
 
 export default function SimpleForm() {
   const [values, setValues] = useState({})
   const [submitAttempted, setSubmitAttempted] = useState(false)
+  const [submittedData, setSubmittedData] = useState(null)
 
   const fullName = (values.fullName ?? '').trim()
   const email = (values.email ?? '').trim()
@@ -26,6 +28,12 @@ export default function SimpleForm() {
   function handleSubmit(event) {
     event.preventDefault()
     setSubmitAttempted(true)
+
+    if (Object.values(errors).some(Boolean)) {
+      return
+    }
+
+    setSubmittedData({ fullName, email })
   }
 
   return (
@@ -36,6 +44,8 @@ export default function SimpleForm() {
         <InputField name="email" label="Email" type="email" />
         <button type="submit">Submit</button>
       </form>
+
+      {submittedData && <ShowData data={submittedData} />}
     </FormContext.Provider>
   )
 }
